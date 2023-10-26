@@ -1,9 +1,11 @@
 import { lazy, Suspense } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useParams } from 'react-router-dom';
 
 const loadComponent = (path) => lazy(() => import(/* @vite-ignore */ `./${path}`));
 
-const Tabs = ({ tabs, tabId }) => {
+const Tabs = ({ tabs }) => {
+	const { tabId } = useParams();
+	console.log(tabId);
 	return (
 		<nav>
 			<ul>
@@ -15,7 +17,7 @@ const Tabs = ({ tabs, tabId }) => {
 						</li>
 					))}
 			</ul>
-			<Suspense fallback={<div>Loading...</div>}>
+			{/* <Suspense fallback={<div>Loading...</div>}>
 				<Routes>
 					{tabs.map((tab) => (
 						<Route key={tab.id} path={`/${tab.id}`}>
@@ -23,7 +25,7 @@ const Tabs = ({ tabs, tabId }) => {
 						</Route>
 					))}
 				</Routes>
-			</Suspense>
+			</Suspense> */}
 		</nav>
 	);
 };
