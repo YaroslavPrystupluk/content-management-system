@@ -12,7 +12,7 @@ module.exports = {
 	ignorePatterns: ['dist', '.eslintrc.cjs'],
 	parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
 	settings: { react: { version: '18.2' } },
-	plugins: ['react-refresh', 'prettier', 'react',],
+	plugins: ['react-refresh', 'prettier', 'react'],
 	rules: {
 		'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 		semi: ['error', 'always'],
@@ -116,5 +116,6 @@ module.exports = {
 		'react/function-component-definition': 'off',
 		'react/jsx-no-useless-fragment': 'off',
 		'react/prop-types': 'off',
+		"react/jsx-filename-extension": [2, { extensions: [".js", ".jsx", ".ts", ".tsx"] }],
 	},
 };
