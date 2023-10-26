@@ -25,13 +25,9 @@ const App = () => {
 		fetchData();
 	}, []);
 	return (
-		<div>
-			<h1>Content management system</h1>
-			<Tabs tabs={tabs} />
-			<Routes>
-				<Route path="/:tabId?" component={Tabs} />
-			</Routes>
-		</div>
+		<Routes>
+			<Route path="/:id/*" element={<Tabs tabs={tabs} />} />
+		</Routes>
 	);
 };
 

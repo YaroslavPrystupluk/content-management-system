@@ -116,6 +116,6 @@ module.exports = {
 		'react/function-component-definition': 'off',
 		'react/jsx-no-useless-fragment': 'off',
 		'react/prop-types': 'off',
-		"react/jsx-filename-extension": [2, { extensions: [".js", ".jsx", ".ts", ".tsx"] }],
+		'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
 	},
 };
