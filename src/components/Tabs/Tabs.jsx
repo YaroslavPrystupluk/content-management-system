@@ -1,11 +1,9 @@
 import { lazy, Suspense } from 'react';
-import { Link, Route, Routes, useParams } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 
-const loadComponent = (path) => lazy(() => import(/* @vite-ignore */ `.${path}`));
+const loadComponent = (path) => lazy(() => import(/* @vite-ignore */ `./${path}`));
 
-const Tabs = ({ tabs }) => {
-	const { tabId } = useParams();
-
+const Tabs = ({ tabs, tabId }) => {
 	return (
 		<nav>
 			<ul>

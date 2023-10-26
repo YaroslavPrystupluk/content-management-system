@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import Tabs from '../components/Tabs/Tabs';
 
 const App = () => {
 	const [tabs, setTabs] = useState([]);
+	const { tabId } = useParams();
 
 	useEffect(() => {
 		async function fetchData() {
@@ -26,7 +27,9 @@ const App = () => {
 	}, []);
 	return (
 		<Routes>
-			<Route path="/:id/*" element={<Tabs tabs={tabs} />} />
+			<Route path="*" element={<Tabs tabs={tabs} />}>
+				<Route path=":tabId/*" element={<Tabs tabs={tabs} tabId={tabId} />} />
+			</Route>
 		</Routes>
 	);
 };
