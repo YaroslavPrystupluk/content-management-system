@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Await } from 'react-router-dom';
 
-const Tabs = ({ tabs, tab }) => {
+const Tabs = ({ tab }) => {
 	const MyLazyComp = lazy(() => import(/* @vite-ignore */ `../${tab.path}`));
 
 	return (
