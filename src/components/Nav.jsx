@@ -1,4 +1,5 @@
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, Route, Routes, useLoaderData } from 'react-router-dom';
+import { Tabs } from './Tabs';
 
 const Nav = () => {
 	const tabs = useLoaderData();
@@ -14,6 +15,11 @@ const Nav = () => {
 						</li>
 					))}
 			</ul>
+			<Routes>
+				{tabs.map((tab) => (
+					<Route key={tab.id} path={`/${tab.id}/*`} element={<Tabs tab={tab} path={tab.path} />} />
+				))}
+			</Routes>
 		</nav>
 	);
 };
