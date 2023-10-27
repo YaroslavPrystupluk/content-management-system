@@ -1,12 +1,15 @@
 import { lazy, Suspense } from 'react';
+import { Await } from 'react-router-dom';
 
-const Tabs = ({ tab }) => {
+const Tabs = ({ tabs, tab }) => {
 	const MyLazyComp = lazy(() => import(/* @vite-ignore */ `../${tab.path}`));
 
 	return (
 		<>
 			<Suspense fallback={<div>Loading...</div>}>
-				<MyLazyComp />
+				<Await resolve={tab}>
+					<MyLazyComp />
+				</Await>
 			</Suspense>
 		</>
 	);
