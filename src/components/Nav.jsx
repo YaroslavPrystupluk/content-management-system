@@ -26,7 +26,7 @@ const Nav = () => {
 									<Route
 										key={tab.id}
 										path={`/${tab.id}/*`}
-										element={<Tabs tab={tab} tabs={tabs} path={tab.path} />}
+										element={<Tabs tab={tab} path={tab.path} />}
 									/>
 								))}
 							</Routes>
