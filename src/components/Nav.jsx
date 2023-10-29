@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import { Link, Route, Routes, defer, useLoaderData, Await } from 'react-router-dom';
-import { Tabs } from './Tabs';
+import { Link, Route, Routes, useLoaderData, Await } from 'react-router-dom';
+import { Tab } from './Tab';
 
 const Nav = () => {
 	const { tabs } = useLoaderData();
@@ -23,15 +23,11 @@ const Nav = () => {
 							</ul>
 							<Routes>
 								{resolvedTabs.map((tab) => (
-									<Route
-										key={tab.id}
-										path={`/${tab.id}/*`}
-										element={<Tabs tab={tab} path={tab.path} />}
-									/>
+									<Route key={tab.id} index path={`/${tab.id}/*`} element={<Tab tab={tab} />} />
 								))}
 							</Routes>
 						</>
-					)}
+					)} 
 				</Await>
 			</Suspense>
 		</nav>
@@ -45,7 +41,7 @@ async function getTabs() {
 }
 
 const tabsLoader = () => {
-	return defer({ tabs: getTabs() });
+	return { tabs: getTabs() };
 };
 
 // eslint-disable-next-line react-refresh/only-export-components

@@ -1,7 +1,7 @@
 import { lazy, Suspense, useState, useEffect } from 'react';
 import { Await } from 'react-router-dom';
 
-const Tabs = ({ tab }) => {
+const Tab = ({ tab }) => {
 	const pathLocalStorage = localStorage.getItem('path');
 	const initialPath = pathLocalStorage || `../${tab.path}`;
 	const [path, setPath] = useState(initialPath);
@@ -24,4 +24,4 @@ const Tabs = ({ tab }) => {
 	);
 };
 
-export { Tabs };
+export { Tab };

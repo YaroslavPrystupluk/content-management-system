@@ -27,6 +27,7 @@ module.exports = {
 		'no-template-curly-in-string': 'error',
 		'no-console': 'warn',
 		'no-unneeded-ternary': 'off',
+		'prefer-destructuring': 'off',
 		'no-delete-var': 'error',
 		'no-empty': ['error', { allowEmptyCatch: true }],
 		'no-empty-function': 'warn',
