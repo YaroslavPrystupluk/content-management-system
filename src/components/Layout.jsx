@@ -1,4 +1,6 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
+import SendIcon from '@mui/icons-material/Send';
+import LoadingButton from '@mui/lab/LoadingButton';
 import {
 	Outlet,
 	useLoaderData,
@@ -17,6 +19,15 @@ const Layout = () => {
 	const location = useLocation();
 	const initialTab = tabs.find((t) => t.order === 0);
 
+	const [loading, setLoading] = useState(false);
+	const [activeTab, setActiveTab] = useState(initialTab);
+
+	const handleTabClick = (tab) => {
+		setLoading(true);
+		setActiveTab(tab);
+		navigate(`/${tab.id}`);
+	};
+
 	useEffect(() => {
 		const currentTabId = location.pathname.replace('/', '');
 
@@ -33,15 +44,27 @@ const Layout = () => {
 				<h1>Content management system</h1>
 				<Suspense fallback={<div>Loading...</div>}>
 					<Await resolve={tabs}>
-						<ul>
-							{tabs
-								.sort((a, b) => a.order - b.order)
-								.map((tab) => (
-									<li key={tab.id}>
-										<NavLink to={`/${tab.id}`}>{`${tab.title}`}</NavLink>
-									</li>
-								))}
-						</ul>
+						{tabs
+							.sort((a, b) => a.order - b.order)
+							.map((tab) => (
+								<LoadingButton
+									key={tab.id}
+									style={{ margin: '10px', width: '150px' }}
+									size="small"
+									endIcon={<SendIcon />}
+									loading={loading && tab === activeTab}
+									onClick={() => handleTabClick(tab)}
+									loadingPosition="end"
+									variant="contained"
+								>
+									<NavLink
+										style={{ color: 'whitesmoke', textDecoration: 'none' }}
+										to={`/${tab.id}`}
+									>
+										{`${tab.title}`}
+									</NavLink>
+								</LoadingButton>
+							))}
 					</Await>
 				</Suspense>
 			</nav>
