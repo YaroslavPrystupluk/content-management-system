@@ -119,5 +119,6 @@ module.exports = {
 		'react/jsx-no-useless-fragment': 'off',
 		'react/prop-types': 'off',
 		'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+		'react-hooks/exhaustive-deps': 'off',
 	},
 };

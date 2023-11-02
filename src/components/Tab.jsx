@@ -1,16 +1,11 @@
 import { lazy, Suspense, useState, useEffect } from 'react';
 import { Await } from 'react-router-dom';
 
-const Tab = ({ tab, tabs }) => {
-	const initialTab = tabs.find((t) => t.order === 0);
-	const defaultPath = initialTab ? `../${initialTab.path}` : '';
-	const pathLocalStorage = localStorage.getItem('path');
-	const initialPath = pathLocalStorage || defaultPath;
-	const [path, setPath] = useState(initialPath);
+const Tab = ({ tab }) => {
+	const [path, setPath] = useState('');
 
 	useEffect(() => {
 		setPath(`../${tab.path}`);
-		localStorage.setItem('path', path);
 	}, [tab, path]);
 
 	const MyTabs = lazy(() => import(/* @vite-ignore */ path));

@@ -1,9 +1,31 @@
-import { Suspense } from 'react';
-import { Link, Outlet, useLoaderData, Await, Route, Routes } from 'react-router-dom';
+import { Suspense, useEffect } from 'react';
+import {
+	Outlet,
+	useLoaderData,
+	Await,
+	Route,
+	Routes,
+	useNavigate,
+	useLocation,
+	NavLink,
+} from 'react-router-dom';
 import { Tab } from './Tab';
 
 const Layout = () => {
 	const { tabs } = useLoaderData();
+	const navigate = useNavigate();
+	const location = useLocation();
+	const initialTab = tabs.find((t) => t.order === 0);
+
+	useEffect(() => {
+		const currentTabId = location.pathname.replace('/', '');
+
+		if (currentTabId) {
+			navigate(`/${currentTabId}`);
+		} else if (initialTab) {
+			navigate(`/${initialTab.id}`);
+		}
+	}, []);
 
 	return (
 		<>
@@ -16,29 +38,22 @@ const Layout = () => {
 								.sort((a, b) => a.order - b.order)
 								.map((tab) => (
 									<li key={tab.id}>
-										<Link to={`/${tab.id}`}>{`${tab.title}`}</Link>
+										<NavLink to={`/${tab.id}`}>{`${tab.title}`}</NavLink>
 									</li>
 								))}
 						</ul>
-						<Routes>
-							{tabs.map((tab) => (
-								<Route key={tab.id} path={`/${tab.id}/*`} element={<Tab tab={tab} tabs={tabs} />} />
-							))}
-						</Routes>
 					</Await>
 				</Suspense>
 			</nav>
+			<Routes>
+				{tabs.map((tab) => (
+					<Route key={tab.id} path={`/${tab.id}/*`} element={<Tab tab={tab} />} />
+				))}
+			</Routes>
+
 			<Outlet />
 		</>
 	);
 };
 
-const tabLoader = async () => {
-	const res = await fetch('tabs.json');
-
-	const tabs = await res.json();
-
-	return { tabs };
-};
-
-export { Layout, tabLoader };
+export { Layout };

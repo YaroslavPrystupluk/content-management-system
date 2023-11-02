@@ -4,11 +4,12 @@ import {
 	createBrowserRouter,
 	createRoutesFromElements,
 } from 'react-router-dom';
-import { Layout, tabLoader } from '../components/Layout';
+import { Layout } from '../components/Layout';
+import { tabsLoader } from '../loader/tabsLoader';
 
 const App = () => {
 	const router = createBrowserRouter(
-		createRoutesFromElements(<Route path="/*" element={<Layout />} loader={tabLoader} />),
+		createRoutesFromElements(<Route path="/*" element={<Layout />} loader={tabsLoader} />),
 	);
 
 	return <RouterProvider router={router} />;
