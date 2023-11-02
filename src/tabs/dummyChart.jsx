@@ -20,7 +20,6 @@ const DummyChart = () => {
 
 	return (
 		<div>
-			<h1>Dummy Chart</h1>
 			<div style={{ width: '300px', height: '200px' }}>
 				<Bar data={data} />
 			</div>
