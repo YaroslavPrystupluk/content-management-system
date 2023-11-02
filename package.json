@@ -1,6 +1,7 @@
 {
 	"name": "content-management-system",
 	"private": true,
+	"homepage": "https://yaroslavprystupluk.github.io/content-management-system/",
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
