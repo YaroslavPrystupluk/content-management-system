@@ -9,7 +9,7 @@ import { tabsLoader } from '../loader/tabsLoader';
 
 const App = () => {
 	const router = createBrowserRouter(
-		createRoutesFromElements(<Route path="/*" element={<Layout />} loader={tabsLoader} />),
+		createRoutesFromElements(<Route index element={<Layout />} loader={tabsLoader} />),
 	);
 
 	return <RouterProvider basename={import.meta.env.BASE_URL} router={router} />;

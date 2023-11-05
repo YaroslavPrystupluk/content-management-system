@@ -12,9 +12,9 @@ import {
 	useLocation,
 	NavLink,
 } from 'react-router-dom';
-import Tab from './Tab';
+// import Tab from './Tab';
 
-// const Tab = lazy(() => import('./Tab'));
+const Tab = lazy(() => import('./Tab'));
 
 const Layout = () => {
 	const { tabs } = useLoaderData();
@@ -73,7 +73,15 @@ const Layout = () => {
 			</nav>
 			<Routes>
 				{tabs.map((tab) => (
-					<Route key={tab.id} path={`/${tab.id}/*`} element={<Tab tab={tab} />} />
+					<Route
+						key={tab.id}
+						path={`/${tab.id}/*`}
+						element={
+							<Suspense fallback={<div>Loading...</div>}>
+								<Tab tab={tab} />
+							</Suspense>
+						}
+					/>
 				))}
 			</Routes>
 			<Outlet />
