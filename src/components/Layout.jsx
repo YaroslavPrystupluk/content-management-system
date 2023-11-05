@@ -1,6 +1,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import LoadingButton from '@mui/lab/LoadingButton';
+
 import {
 	Outlet,
 	useLoaderData,
@@ -11,7 +12,9 @@ import {
 	useLocation,
 	NavLink,
 } from 'react-router-dom';
-import { Tab } from './Tab';
+import Tab from './Tab';
+
+// const Tab = lazy(() => import('./Tab'));
 
 const Layout = () => {
 	const { tabs } = useLoaderData();
@@ -73,10 +76,9 @@ const Layout = () => {
 					<Route key={tab.id} path={`/${tab.id}/*`} element={<Tab tab={tab} />} />
 				))}
 			</Routes>
-
 			<Outlet />
 		</>
 	);
 };
 
-export { Layout };
+export default Layout;

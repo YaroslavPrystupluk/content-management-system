@@ -4,7 +4,7 @@ import {
 	createBrowserRouter,
 	createRoutesFromElements,
 } from 'react-router-dom';
-import { Layout } from '../components/Layout';
+import Layout from '../components/Layout';
 import { tabsLoader } from '../loader/tabsLoader';
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
 		createRoutesFromElements(<Route path="/*" element={<Layout />} loader={tabsLoader} />),
 	);
 
-	return <RouterProvider router={router} />;
+	return <RouterProvider basename={import.meta.env.BASE_URL} router={router} />;
 };
 
 export default App;
