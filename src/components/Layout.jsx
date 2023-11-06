@@ -12,9 +12,9 @@ import {
 	useLocation,
 	NavLink,
 } from 'react-router-dom';
-// import Tab from './Tab';
+import Tab from './Tab';
 
-const Tab = lazy(() => import('./Tab'));
+// const Tab = lazy(() => import('./Tab'));
 
 const Layout = () => {
 	const { tabs } = useLoaderData();

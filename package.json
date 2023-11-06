@@ -3,8 +3,7 @@
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
-	"homepage": "https//YaroslavPrystupluk.github.io/content-management-system",
-	"scripts": {
+		"scripts": {
 		"dev": "vite",
 		"build": "vite build",
 		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
