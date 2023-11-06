@@ -4,8 +4,8 @@ import {
 	createBrowserRouter,
 	createRoutesFromElements,
 } from 'react-router-dom';
-import Layout from '../components/Layout';
-import { tabsLoader } from '../loader/tabsLoader';
+import Layout from './components/Layout.jsx';
+import { tabsLoader } from './loader/tabsLoader.js';
 
 const App = () => {
 	const router = createBrowserRouter(
