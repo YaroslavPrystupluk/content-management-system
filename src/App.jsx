@@ -12,7 +12,7 @@ const App = () => {
 		createRoutesFromElements(<Route path="/*" element={<Layout />} loader={tabsLoader} />),
 	);
 
-	return <RouterProvider basename={import.meta.env.BASE_URL} router={router} />;
+	return <RouterProvider router={router} />;
 };
 
 export default App;
