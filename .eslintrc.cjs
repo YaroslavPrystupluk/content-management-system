@@ -122,5 +122,6 @@ module.exports = {
 		'react-hooks/exhaustive-deps': 'off',
 		'consistent-return': 'off',
 		'react/jsx-props-no-spreading': 'off',
+		'react/jsx-wrap-multilines': never,
 	},
 };

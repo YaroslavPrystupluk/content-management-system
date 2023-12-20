@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState, lazy } from 'react';
+import { Suspense, useEffect, useState} from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import LoadingButton from '@mui/lab/LoadingButton';
 
@@ -13,8 +13,6 @@ import {
 	NavLink,
 } from 'react-router-dom';
 import Tab from './Tab';
-
-// const Tab = lazy(() => import('./Tab'));
 
 const Layout = () => {
 	const { tabs } = useLoaderData();
