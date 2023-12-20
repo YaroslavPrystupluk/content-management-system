@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 
 const Tab = ({ tab }) => {
-	const MyTabs = lazy(() => import(/* @vite-ignore */ `./${tab.path}`));
+	const MyTabs = lazy(() => import(`/${tab.path}`));
 
 	return (
 		<>
