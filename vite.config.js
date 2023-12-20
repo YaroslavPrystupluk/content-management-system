@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react-swc';
 export default defineConfig({
 	plugins: [react()],
 
-	// base: '/content-management-system',
+	base: '/content-management-system',
 });
